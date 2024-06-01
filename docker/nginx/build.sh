@@ -15,8 +15,10 @@
 
 #!/bin/bash
 
-ACCOUNT=$( curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq -r ".AccountId" )
-REGION=$( curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone |  sed 's/\(.*\)[a-z]/\1/' )
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+ACCOUNT=$( curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq -r ".AccountId" )
+REGION=$( curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/' )
+
 aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT.dkr.ecr.$REGION.amazonaws.com
 docker build -t nginx:latest .
 docker tag nginx:latest $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/nginx:latest
