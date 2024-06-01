@@ -23,7 +23,9 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-export REGION=$( curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone |  sed 's/\(.*\)[a-z]/\1/' )
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+
+export REGION=$( curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/' )
 
 (cd function; pip install crhelper -t .)
 
