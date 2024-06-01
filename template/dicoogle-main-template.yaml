@@ -461,7 +461,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: !Sub https://${S3BucketName}.s3.amazonaws.com/dicoogle-ecs-template.yaml
-      TimeoutInMinutes: 20
+      TimeoutInMinutes: 60
       Parameters:
         VpcId: !GetAtt ProviderVpcStack.Outputs.VpcId
         PrivateSubnet1Id: !GetAtt ProviderVpcStack.Outputs.PrivateSubnet1
