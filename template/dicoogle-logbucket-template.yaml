@@ -73,7 +73,10 @@ Resources:
           - id: W35
             reason: "The access log for the LogBucket is not configured."
     Properties:
-      AccessControl: LogDeliveryWrite
+      # AccessControl: LogDeliveryWrite
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
