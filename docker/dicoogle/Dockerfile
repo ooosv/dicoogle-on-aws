@@ -24,17 +24,17 @@ USER dicoogle
 
 WORKDIR /opt/dicoogle
 
-RUN wget https://github.com/bioinformatics-ua/dicoogle/releases/download/3.0.2/Dicoogle_v3.0.2.zip && \
-    unzip Dicoogle_v3.0.2.zip
+RUN wget https://github.com/bioinformatics-ua/dicoogle/releases/download/3.3.6/Dicoogle_v3.3.6.zip && \
+    unzip Dicoogle_v3.3.6.zip
 
-COPY settings /opt/dicoogle/Dicoogle_v3.0.2/Plugins/settings
+COPY settings /opt/dicoogle/Dicoogle_v3.3.6/Plugins/settings
 USER root
-RUN chown -R dicoogle:dicoogle /opt/dicoogle/Dicoogle_v3.0.2/Plugins/settings
+RUN chown -R dicoogle:dicoogle /opt/dicoogle/Dicoogle_v3.3.6/Plugins/settings
 
 USER dicoogle
-RUN mkdir /opt/dicoogle/Dicoogle_v3.0.2/images && \
-    mkdir /opt/dicoogle/Dicoogle_v3.0.2/index
+RUN mkdir /opt/dicoogle/Dicoogle_v3.3.6/images && \
+    mkdir /opt/dicoogle/Dicoogle_v3.3.6/index
 
-WORKDIR /opt/dicoogle/Dicoogle_v3.0.2
+WORKDIR /opt/dicoogle/Dicoogle_v3.3.6
 
 ENTRYPOINT ["java","-jar","dicoogle.jar","-s"]
