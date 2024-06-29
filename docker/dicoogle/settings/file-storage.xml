@@ -16,7 +16,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 <configuration>
-    <root-dir>/opt/dicoogle/Dicoogle_v3.0.2/images</root-dir>
+    <root-dir>/opt/dicoogle/Dicoogle_v3.3.6/images</root-dir>
     <use-relative-path>false</use-relative-path>
     <scheme>file</scheme>
 </configuration>
