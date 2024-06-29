@@ -20,7 +20,7 @@ ACCOUNT=$( curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/lat
 REGION=$( curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/' )
 
 aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT.dkr.ecr.$REGION.amazonaws.com
-docker build -t dicoogle:3.0.2 .
-docker tag dicoogle:3.0.2 $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/dicoogle:3.0.2
-docker push $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/dicoogle:3.0.2
-echo “Dicoogle image: $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/dicoogle:3.0.2”
+docker build -t dicoogle:3.3.6 .
+docker tag dicoogle:3.3.6 $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/dicoogle:3.3.6
+docker push $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/dicoogle:3.3.6
+echo “Dicoogle image: $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/dicoogle:3.3.6”
