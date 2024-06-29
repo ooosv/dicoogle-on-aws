@@ -199,13 +199,13 @@ Resources:
           Image: !Ref DicoogleImage
           MountPoints:
             - SourceVolume: images
-              ContainerPath: /opt/dicoogle/Dicoogle_v3.0.2/images
+              ContainerPath: /opt/dicoogle/Dicoogle_v3.3.6/images
             - SourceVolume: imagesfroms3
-              ContainerPath: /opt/dicoogle/Dicoogle_v3.0.2/images/froms3
+              ContainerPath: /opt/dicoogle/Dicoogle_v3.3.6/images/froms3
             - SourceVolume: index
-              ContainerPath: /opt/dicoogle/Dicoogle_v3.0.2/index
+              ContainerPath: /opt/dicoogle/Dicoogle_v3.3.6/index
             - SourceVolume: confs
-              ContainerPath: /opt/dicoogle/Dicoogle_v3.0.2/confs
+              ContainerPath: /opt/dicoogle/Dicoogle_v3.3.6/confs
           PortMappings:
             - ContainerPort: !Ref AdminPort
             - ContainerPort: !Ref StoragePort
